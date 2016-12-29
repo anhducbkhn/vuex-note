@@ -1,13 +1,18 @@
 <template>
 	<div class="listnote">
 		<ul>
-			<li v-for="n in listNotes" @click="editNote(n)">
+			<li v-for="n in listNotes" @click="editNote(n)" v-bind:class="{active : n.active}">
 				{{ n.text }}
 			</li>
 		</ul>
 		<p>Total note: {{ totalCount }}</p>
 	</div>
 </template>
+<style type="text/css">
+  .active {
+    color: red;
+  }
+</style>
 <script>
 export default {
   name: 'ListNote',
