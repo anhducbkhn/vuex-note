@@ -20,5 +20,5 @@
       this.$store.dispatch('deleteNote')
     }
   }
-	}
+}
 </script>

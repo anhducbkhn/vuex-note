@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import * as actions from './actions'
-
+import * as getters from './getters'
 Vue.use(Vuex)
 // init state
 const state = {
@@ -12,6 +12,7 @@ const state = {
 export default new Vuex.Store({
   actions,
   state,
+  getters,
   mutations: {
     increment (state) {
       state.count ++
@@ -23,9 +24,9 @@ export default new Vuex.Store({
 
     addNote (state, text) {
       state.notes.forEach((value) => {
-        console.log(value)
         value.active = false
       })
+
       state.notes.push(text)
     },
 

@@ -1,6 +1,8 @@
 <template>
 	<div>
-	<textarea>{{ note }}</textarea>
+	<textarea>{{ note.text }}
+    id: {{ note.id }}
+	</textarea>
 	</div>
 </template>
 <script>
@@ -8,12 +10,11 @@ export default {
   name: 'editor',
   computed: {
     note: function () {
-      let note = this.$store.state.notes.filter(note => {
-        if (note.active === true) return note
-      })
+      if (this.$store.state.notes.length === 0) {
+        return {text: '', id: ''}
+      }
 
-      console.log(note.text)
-      return note.text
+      return this.$store.getters.getActiveNote[0]
     }
   }
 }
