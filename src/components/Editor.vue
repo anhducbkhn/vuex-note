@@ -1,7 +1,8 @@
 <template>
 	<div>
-	<textarea>{{ note.text }}
-    id: {{ note.id }}
+  <p> ID: {{ note.id }} </p>
+	<textarea>
+  {{ note.text }}
 	</textarea>
 	</div>
 </template>
@@ -11,6 +12,10 @@ export default {
   computed: {
     note: function () {
       if (this.$store.state.notes.length === 0) {
+        return {text: '', id: ''}
+      }
+
+      if (typeof this.$store.getters.getActiveNote[0] === 'undefined') {
         return {text: '', id: ''}
       }
 

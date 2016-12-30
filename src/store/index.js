@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import * as actions from './actions'
 import * as getters from './getters'
+import * as _ from 'lodash'
+
 Vue.use(Vuex)
 // init state
 const state = {
@@ -18,8 +20,13 @@ export default new Vuex.Store({
       state.count ++
     },
 
-    decrement (state, number) {
-      state.notes.pop()
+    deleteNote (state, note) {
+      state.notes = _.remove(state.notes, (n) => {
+        return n !== note
+      })
+
+      // console.log(remove)
+      // state.notes = remove
     },
 
     addNote (state, text) {
@@ -31,7 +38,13 @@ export default new Vuex.Store({
     },
 
     editNote (state, note) {
-      console.log(note)
+      state.notes.forEach((value) => {
+        if (note === value) {
+          value.active = true
+        } else {
+          value.active = false
+        }
+      })
     }
   }
 })

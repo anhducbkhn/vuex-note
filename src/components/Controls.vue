@@ -17,7 +17,8 @@
     },
 
     deleteNote: function (event) {
-      this.$store.dispatch('deleteNote')
+      let activeNote = this.$store.getters.getActiveNote[0]
+      this.$store.dispatch('deleteNote', activeNote)
     }
   }
 }
