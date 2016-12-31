@@ -45,6 +45,15 @@ export default new Vuex.Store({
           value.active = false
         }
       })
+    },
+
+    updateMessage (state, note) {
+      state.notes.forEach((value) => {
+        let isActive = value.active
+        if (isActive === true) {
+          value.text = note
+        }
+      })
     }
   }
 })

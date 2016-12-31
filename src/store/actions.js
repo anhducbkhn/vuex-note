@@ -9,3 +9,6 @@ export const deleteNote = ({ commit }, note) => {
 export const editNote = ({ commit }, n) => {
   commit('editNote', n)
 }
+export const updateMessage = ({ commit }, note) => {
+  commit('updateMessage', note)
+}
